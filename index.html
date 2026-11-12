@@ -442,7 +442,7 @@ footer .skyline { height: 110px; opacity: .55; }
         <h2 data-c="place">Koubri</h2>
         <p data-c="country">Burkina Faso</p>
         <div class="btns row">
-          <a class="btn btn-blue" id="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Koubri%2C%20Burkina%20Faso" target="_blank" rel="noopener">
+          <a class="btn btn-blue" id="maps" href="https://www.google.com/maps/dir/?api=1&amp;destination=12.1872596%2C-1.4002986" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8-8-2Z"/></svg>
             Voir l’itinéraire
           </a>
@@ -500,6 +500,8 @@ const CONFIG = {
   time1: "9 h", time2: "13 h",
   dateText: "le dimanche 15 novembre 2026 à 9 h",
   place: "Koubri", country: "Burkina Faso",
+  // Point exact pour l'itinéraire (latitude, longitude) : Marché de Koubri
+  gps: "12.1872596,-1.4002986",
   // Numéros au format international, sans espaces ni « + »
   phones: ["22665668412", "22661741490"],
   rsvpMessage: "Bonjour, je confirme ma présence au mariage de Ganema Mohamed le 15 novembre 2026."
@@ -513,7 +515,7 @@ const CONFIG = {
   });
 
   const where = CONFIG.place + ", " + CONFIG.country;
-  $("#maps").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(where);
+  $("#maps").href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(CONFIG.gps || where);
 
   // Calendar: all-day event on the wedding day, programme in the description
   const d = new Date(CONFIG.start);
